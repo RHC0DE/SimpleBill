@@ -2,7 +2,7 @@
 //  SimpleBillApp.swift
 //  SimpleBill
 //
-//  Created by Guest User on 18/01/2022.
+//  Created by RHC0DE on 18/01/2022.
 //
 
 import SwiftUI
