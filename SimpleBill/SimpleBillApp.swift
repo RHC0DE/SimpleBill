@@ -11,7 +11,7 @@ import SwiftUI
 struct SimpleBillApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplasghScreenView()
         }
     }
 }
