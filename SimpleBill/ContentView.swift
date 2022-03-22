@@ -29,17 +29,17 @@ struct ContentView: View {
         return finalOrderCosts / Double(numberOfPeople)
     }
     
-    
     var body: some View {
-        
+
         NavigationView {
+            
             Form{
-                
+
                 Section(header: Text("enter the desired amount")) {
                     // Binds the entered value from the user to the $costInTotal variable
                     TextField("Amount", text: $costInTotal)
                 }
-                
+
                 Section(header: Text("select percentage amount for the tip")) {
                     // A Picker that containts a list of all the percetage values in it
                     Picker("Tip percentage (%)", selection: $selectedTipPercentage) {
@@ -48,21 +48,21 @@ struct ContentView: View {
                         }
                     }.pickerStyle(SegmentedPickerStyle())
                 }
-                
+
                 Section(header: Text("choose the amount of people")) {
                     Picker("Number of people", selection: $numberOfPeople) {
                         ForEach(0 ..< 26) {
                             Text("\($0) people ")
                         }
                     }
-                    
                 }
-                
+
                 Section(header: Text("total cost per person")) {
                     Text("€ \(getTotalCosts(),specifier: "%.2f")")
                 }
-                
+
             }.navigationTitle("Bill Splitter").self.keyboardType(.decimalPad)
+            
         }
     }
 }

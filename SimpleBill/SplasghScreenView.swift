@@ -2,7 +2,7 @@
 //  SplasghScreenView.swift
 //  SimpleBill
 //
-//  Created by Guest User on 24/02/2022.
+//  Created by RHC0DE on 24/02/2022.
 //
 
 import SwiftUI
@@ -13,12 +13,13 @@ struct SplasghScreenView: View {
     @State private var opacity = 0.5
     
     var body: some View {
+        
         if isActive {
-            ContentView()
+            WelcomeView()
         } else {
             VStack {
                 VStack {
-                    Image("billythesplitter")
+                    Image(Images.logo)
                         .font(.system(size: 80))
                 }
                 .scaleEffect(size)
@@ -30,14 +31,17 @@ struct SplasghScreenView: View {
                     }
                 }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .accentColor(Color.black)
+            .background(Color(red: 0.054, green: 0.462, blue: 0.743))
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.isActive = true
                 }
             }
+            
         }
-        
-
+            
     }
 }
 
