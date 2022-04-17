@@ -10,6 +10,8 @@
 		312586C827D53CD60028C877 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312586C727D53CD60028C877 /* WelcomeView.swift */; };
 		3137163E27E8C23A00C6BD68 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137163D27E8C23A00C6BD68 /* Strings.swift */; };
 		3137164027E8CAD800C6BD68 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3137163F27E8CAD800C6BD68 /* Images.swift */; };
+		316E04FA27F6D2AF0062D000 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316E04F927F6D2AF0062D000 /* Extensions.swift */; };
+		316E04FD27F6D9400062D000 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316E04FC27F6D9400062D000 /* DetailView.swift */; };
 		31AA81D327C8445F00407262 /* SplasghScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AA81D227C8445F00407262 /* SplasghScreenView.swift */; };
 		31EAF1CF2796C53800900D37 /* SimpleBillApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAF1CE2796C53800900D37 /* SimpleBillApp.swift */; };
 		31EAF1D12796C53800900D37 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAF1D02796C53800900D37 /* ContentView.swift */; };
@@ -21,6 +23,8 @@
 		312586C727D53CD60028C877 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		3137163D27E8C23A00C6BD68 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		3137163F27E8CAD800C6BD68 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		316E04F927F6D2AF0062D000 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		316E04FC27F6D9400062D000 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		31AA81D227C8445F00407262 /* SplasghScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplasghScreenView.swift; sourceTree = "<group>"; };
 		31EAF1CB2796C53800900D37 /* SimpleBill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleBill.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31EAF1CE2796C53800900D37 /* SimpleBillApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleBillApp.swift; sourceTree = "<group>"; };
@@ -40,6 +44,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		316E04FB27F6D2E80062D000 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				31EAF1D02796C53800900D37 /* ContentView.swift */,
+				316E04FC27F6D9400062D000 /* DetailView.swift */,
+				31EAF1CE2796C53800900D37 /* SimpleBillApp.swift */,
+				31AA81D227C8445F00407262 /* SplasghScreenView.swift */,
+				312586C727D53CD60028C877 /* WelcomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		31EAF1C22796C53700900D37 = {
 			isa = PBXGroup;
 			children = (
@@ -59,12 +75,10 @@
 		31EAF1CD2796C53800900D37 /* SimpleBill */ = {
 			isa = PBXGroup;
 			children = (
-				312586C727D53CD60028C877 /* WelcomeView.swift */,
-				31EAF1CE2796C53800900D37 /* SimpleBillApp.swift */,
-				31EAF1D02796C53800900D37 /* ContentView.swift */,
-				31AA81D227C8445F00407262 /* SplasghScreenView.swift */,
-				3137163F27E8CAD800C6BD68 /* Images.swift */,
+				316E04FB27F6D2E80062D000 /* Views */,
+				316E04F927F6D2AF0062D000 /* Extensions.swift */,
 				3137163D27E8C23A00C6BD68 /* Strings.swift */,
+				3137163F27E8CAD800C6BD68 /* Images.swift */,
 				31EAF1D22796C53800900D37 /* Assets.xcassets */,
 				31EAF1D42796C53800900D37 /* Preview Content */,
 			);
@@ -149,8 +163,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				316E04FD27F6D9400062D000 /* DetailView.swift in Sources */,
 				31EAF1D12796C53800900D37 /* ContentView.swift in Sources */,
 				3137164027E8CAD800C6BD68 /* Images.swift in Sources */,
+				316E04FA27F6D2AF0062D000 /* Extensions.swift in Sources */,
 				31AA81D327C8445F00407262 /* SplasghScreenView.swift in Sources */,
 				3137163E27E8C23A00C6BD68 /* Strings.swift in Sources */,
 				31EAF1CF2796C53800900D37 /* SimpleBillApp.swift in Sources */,
