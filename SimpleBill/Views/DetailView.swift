@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DetailView: View {
     
+    let category: String
+    
     var body: some View {
         
         VStack {
@@ -35,7 +37,7 @@ struct DetailView: View {
                         Text("Bill type")
                             .font(.caption)
                         
-                        Text("Group Dinner")
+                        Text(category)
                             .font(.title3)
                             .fontWeight(.heavy)
                     })
@@ -139,6 +141,6 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView()
+        DetailView(category: "TEst")
     }
 }

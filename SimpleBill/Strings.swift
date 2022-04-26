@@ -13,8 +13,10 @@ struct Strings {
         
         static let headTitle = "The simplest way to split / share expenses with friends and family"
         static let subTitle = "Splitting the bill has never been easier"
-        static let btnLetsStart = "Let's start"
+        static let btnLetsStart = "New"
         static let btnLetsSplit = "Let's split"
+        static let banknote = "banknote"
+        
 
     }
 }

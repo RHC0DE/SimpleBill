@@ -6,47 +6,67 @@
 //
 
 import SwiftUI
+import SlidingTabView
 
 struct WelcomeView: View {
     @State var currentngle: Angle = .degrees(30)
+    @State private var tabIndex = 0
     
     var body: some View {
+        
         NavigationView {
             
-        VStack{
+        VStack {
             
-            VStack(spacing: 20){
-                
-                Image(Images.logo)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 150, height: 150)
-                    .rotationEffect(currentngle)
-                
-                Spacer(minLength: 0)
+            SlidingTabView(selection: $tabIndex, tabs: ["New", "Previous"], animation: .easeOut)
+            
+            if tabIndex == 0 {
+                                
+                VStack(spacing: 20) {
+                   
+                    Spacer()
+                    
+                    Image(Images.moneySplitIcon)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 200, height: 200)
+                        .clipShape(Circle())
+                    
+                    
+                    Text(Strings.WelcomePage.headTitle)
+                        .bold()
+                        .font(.title2)
+                    
+                    Text(Strings.WelcomePage.subTitle)
+                        .foregroundColor(Color(hue: 1.0, saturation: 0.284, brightness: 0.291))
+                        .bold()
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: ContentView())  {
+                        
+                        HStack{
+                            
+                        Image(systemName: Strings.WelcomePage.banknote)
+                            
+                        Text(Strings.WelcomePage.btnLetsStart)
+                            .fontWeight(.bold)
 
-                Text(Strings.WelcomePage.headTitle)
-                    .bold()
-                    .font(.title)
-                
-                Text(Strings.WelcomePage.subTitle)
-                
-                Spacer(minLength: 0)
-                
-                NavigationLink(destination: ContentView())  {
-                    Text(Strings.WelcomePage.btnLetsStart)
-                        .fontWeight(.bold)
+                        }
                         .frame(width: 250, height: 50)
                         .background((Color(red: 0.989, green: 0.308, blue: 0.309).opacity(0.99)))
                         .foregroundColor(Color.black)
                         .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                    }
+                               
                 }
+                .multilineTextAlignment(.center)
+                .padding()
                 
-                Spacer(minLength: 0)
-                           
+            } else if tabIndex == 1 {
+                                
+                 SplitHistoryView()
             }
-            .multilineTextAlignment(.center)
-            .padding()
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

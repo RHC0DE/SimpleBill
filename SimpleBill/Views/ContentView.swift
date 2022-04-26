@@ -14,65 +14,72 @@ struct ContentView: View {
     @State private var selectedTipPercentage = 0 // Serves as tip value selector
     @State private var billTypeSelection = 0
     @State private var confirm = false
-
+    @State private var didConfirmSplit = false
+    
     let billTypes = ["choose", "Restaurant", "Group Activity", "Groceries"]
     let tipPercentages = [0,5,10, 15]
     
-
+    
     init() {
         UITableView.appearance().backgroundColor =
             .clear
     }
     
     var body: some View {
+        
+        NavigationView {
+            
+            VStack{
+                
+                NavigationLink(destination: DetailView(category: billTypes[billTypeSelection]).navigationBarHidden(true), isActive: $didConfirmSplit) {  }
 
-        VStack{
-                
-            Form{
-                
-                Section(header: Text("choose your bill type")) {
-                    Picker("Bill type: ", selection: $billTypeSelection) {
-                        ForEach(0..<billTypes.count) {
-                            Text(self.billTypes[$0])
+                Form{
+                    
+                    Section(header: Text("choose your bill type")) {
+                        Picker("Bill type: ", selection: $billTypeSelection) {
+                            ForEach(0..<billTypes.count) {
+                                Text(self.billTypes[$0])
+                            }
                         }
                     }
-                }
-                
-                Section(header: Text("enter the desired amount")) {
-                    // Binds the entered value from the user to the $costInTotal variable
-                    TextField("Amount", text: $costInTotal)
-                }
-
-                Section(header: Text("select percentage amount for the tip")) {
-                    // A Picker that containts a list of all the percetage values in it
-                    Picker("Tip percentage (%)", selection: $selectedTipPercentage) {
-                        ForEach(0 ..< tipPercentages.count) {
-                            Text("\(tipPercentages[$0])%")
-                        }
-                    }.pickerStyle(SegmentedPickerStyle())
-                }
-
-                Section(header: Text("choose the amount of people")) {
-                    Picker("Number of people", selection: $numberOfPeople) {
-                        ForEach(0 ..< 26) {
-                            Text("\($0) people ")
+                    
+                    Section(header: Text("enter the desired amount")) {
+                        // Binds the entered value from the user to the $costInTotal variable
+                        TextField("Amount", text: $costInTotal)
+                    }
+                    
+                    Section(header: Text("select percentage amount for the tip")) {
+                        // A Picker that containts a list of all the percetage values in it
+                        Picker("Tip percentage (%)", selection: $selectedTipPercentage) {
+                            ForEach(0 ..< tipPercentages.count) {
+                                Text("\(tipPercentages[$0])%")
+                            }
+                        }.pickerStyle(SegmentedPickerStyle())
+                    }
+                    
+                    Section(header: Text("choose the amount of people")) {
+                        Picker("Number of people", selection: $numberOfPeople) {
+                            ForEach(0 ..< 26) {
+                                Text("\($0) people ")
+                            }
                         }
                     }
+                    
+                    Section(header: Text("total cost per person")) {
+                        Text("€ \(getTotalCosts(),specifier: "%.2f")")
+                        
+                    }
+                    
                 }
-
-                Section(header: Text("total cost per person")) {
-                    Text("€ \(getTotalCosts(),specifier: "%.2f")")
-    
-                }
-                
-            }
                 .navigationTitle("").self.keyboardType(.decimalPad)
                 
                 .foregroundColor(.black)
-
+                
                 Spacer()
                 
-                Button(action: {confirm.toggle() }, label: {
+                Button {
+                    confirm.toggle()
+                } label: {
                     Text("Confirm Split ")
                         .fontWeight(.bold)
                         .foregroundColor(.black)
@@ -83,21 +90,25 @@ struct ContentView: View {
                         .background((Color(red: 0.989, green: 0.308, blue: 0.309).opacity(0.99)))
                         .foregroundColor(Color.black)
                         .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
-                })
+                }
                 
+                
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(red: 0.054, green: 0.462, blue: 0.743).ignoresSafeArea(.all, edges: .all))
+            .alert(isPresented: $confirm, content: {
+                Alert(title: Text("Are you sure to split the bill"), message: Text("Confirm the split"),
+                      
+                      primaryButton: .default(Text("Confirm Split"), action:  {
+                    didConfirmSplit = true
+                    
+                }),
+                      secondaryButton: .destructive(Text("Cancel"), action: {
+                    
+                }))
+        })
         }
-         .frame(maxWidth: .infinity, maxHeight: .infinity)
-         .background(Color(red: 0.054, green: 0.462, blue: 0.743).ignoresSafeArea(.all, edges: .all))
-         .alert(isPresented: $confirm, content: {
-             Alert(title: Text("Are you sure to split the bill"), message: Text("Confirm the split"),
-
-                   primaryButton: .default(Text("Confirm Split"), action:  {
-                 
-             }),
-                   secondaryButton: .destructive(Text("Cancel"), action: {
-                 //Code.....
-             }))
-         })
+        .navigationBarHidden(true)
         
     }
     
@@ -118,7 +129,7 @@ struct ContentView: View {
     
     
 }
- 
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
