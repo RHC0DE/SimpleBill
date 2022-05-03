@@ -16,7 +16,18 @@ struct Strings {
         static let btnLetsStart = "New"
         static let btnLetsSplit = "Let's split"
         static let banknote = "banknote"
-        
 
     }
+    
+    struct BackandSplitterView {
+        
+        static let leftarrow = "chevron.left"
+    }
+    
+    struct SplitHistoryView {
+        
+        static let bin = "trash.fill"
+    }
+    
+    
 }

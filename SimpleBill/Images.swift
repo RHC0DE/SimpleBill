@@ -12,4 +12,5 @@ struct Images {
     static let logo = "billythesplitter"
     static let receiptBilly = "receiptBilly"
     static let moneySplitIcon = "moneysplitpicture"
+    static let checkIconImage = "checkIcon"
 }

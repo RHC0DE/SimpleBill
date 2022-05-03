@@ -31,8 +31,22 @@ struct ContentView: View {
             
             VStack{
                 
-                NavigationLink(destination: DetailView(category: billTypes[billTypeSelection]).navigationBarHidden(true), isActive: $didConfirmSplit) {  }
-
+                HStack{
+                    
+                    NavigationLink(destination: WelcomeView().navigationBarHidden(true)) {
+                        
+                        Image(systemName: Strings.BackandSplitterView.leftarrow)
+                            .font(.title2)
+                            .foregroundColor(Color.black)
+                            .padding(5)
+                    }
+                    
+                    Spacer()
+                    
+                }.padding(.leading)
+                
+                NavigationLink(destination: DetailView(category: billTypes[billTypeSelection], numberOfPeople: numberOfPeople, amountPerPerson: getTotalCosts(), totalBill: costInTotal ).navigationBarHidden(true), isActive: $didConfirmSplit) {  }
+                
                 Form{
                     
                     Section(header: Text("choose your bill type")) {
@@ -78,7 +92,9 @@ struct ContentView: View {
                 Spacer()
                 
                 Button {
+                    
                     confirm.toggle()
+                    
                 } label: {
                     Text("Confirm Split ")
                         .fontWeight(.bold)
@@ -92,7 +108,6 @@ struct ContentView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                 }
                 
-                
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(red: 0.054, green: 0.462, blue: 0.743).ignoresSafeArea(.all, edges: .all))
@@ -104,12 +119,11 @@ struct ContentView: View {
                     
                 }),
                       secondaryButton: .destructive(Text("Cancel"), action: {
-                    
                 }))
-        })
+            })
+            
         }
         .navigationBarHidden(true)
-        
     }
     
     /**
@@ -126,8 +140,6 @@ struct ContentView: View {
         // Returns the final order that each person should pay
         return finalOrderCosts / Double(numberOfPeople)
     }
-    
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

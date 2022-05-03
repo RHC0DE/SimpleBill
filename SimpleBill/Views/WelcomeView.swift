@@ -9,16 +9,17 @@ import SwiftUI
 import SlidingTabView
 
 struct WelcomeView: View {
-    @State var currentngle: Angle = .degrees(30)
+    
     @State private var tabIndex = 0
     
     var body: some View {
         
         NavigationView {
             
-        VStack {
+            VStack {
             
-            SlidingTabView(selection: $tabIndex, tabs: ["New", "Previous"], animation: .easeOut)
+            SlidingTabView(selection: $tabIndex, tabs: ["New", "Previous splits"], animation: .easeOut)
+                
             
             if tabIndex == 0 {
                                 
@@ -43,7 +44,7 @@ struct WelcomeView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: ContentView())  {
+                    NavigationLink(destination: ContentView().navigationBarHidden(true))  {
                         
                         HStack{
                             
@@ -69,6 +70,7 @@ struct WelcomeView: View {
             }
             
         }
+        .navigationBarHidden(true)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .accentColor(Color.black)
         .background(Color(red: 0.054, green: 0.462, blue: 0.743).ignoresSafeArea(.all, edges: .all))
